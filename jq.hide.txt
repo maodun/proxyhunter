@@ -1,0 +1,55 @@
+//https://hidemyass.com/proxy-list/
+if($('#ipresult').length == 0){$('body').prepend('<textarea id=ipresult cols=30 rows=10></textarea>');}
+$('div').each(function(){
+if($(this).is(':hidden')){
+$(this).remove();
+}
+if($(this).is(':visible')==false){
+$(this).remove();
+}
+});
+
+$('span').each(function(){
+function isip(s){
+var r,re;
+re= /((\d{1,3})\.){3}(\d{1,3})/;
+r = s.match(re);
+if(r == null){
+return false;
+}
+else{
+return r[0];
+}
+}
+
+if($(this).is(':hidden')){
+$(this).remove();
+}
+if($(this).is(':visible')==false){
+$(this).remove();
+}
+
+if($(this).text() == ''){
+$(this).remove();
+}
+if($(this).text() == '.'){
+$(this).replaceWith('.');
+}
+//$(this).children('style').remove();
+text = $(this).text();
+//console.log(text);
+isipresult = isip(text);
+if(isipresult != false){
+//proxyvalue += isipresult +':'+ $(this).parent().next().text();
+$('#ipresult').val($('#ipresult').val() + isipresult +':'+ $(this).parent().next().text()+','+$(this).parent().next().next().next().next().next().text()+"\n");
+//console.log(isipresult +':'+ $(this).parent().next().text());
+}
+});
+
+
+
+
+
+
+
+
